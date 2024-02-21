@@ -1,20 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Animated } from 'react-native';
+import { useCallback, useState, useEffect } from 'react';
+import { loadFontsAsync } from './src/constants/index';
+import * as SplashScreen from 'expo-splash-screen';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+ const [fontsLoaded, setFontsLoaded] = useState(false);
+ const fadeAnimation = new Animated.Value(1);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+ const loadFonts = useCallback(async () => {
+  try {
+   await loadFontsAsync();
+   setFontsLoaded(true);
+  } catch (error) {
+   console.log(error);
+  }
+ }, []);
+
+ useEffect(() => {
+  loadFonts();
+ }, []);
+
+ const onLayoutRootView = useCallback(async () => {
+  if (fontsLoaded) {
+   await SplashScreen.hideAsync();
+  }
+ }, [fontsLoaded]);
+
+ if (!fontsLoaded) {
+  return null;
+ }
+
+ return (
+  <View onLayout={onLayoutRootView}>
+   <Text>Ahoj</Text>
+  </View>
+ );
+}
