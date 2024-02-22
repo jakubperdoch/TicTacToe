@@ -6,12 +6,6 @@
   "orientation": "portrait",
   "icon": "./src/assets/images/appIcon.png",
   "userInterfaceStyle": "light",
-  "splash": {
-   "image": "./src/assets/images/SplashScreen/splashScreen--light.png",
-   "resizeMode": "contain",
-   "backgroundColor": "#ffff",
-   "animationType": "fade"
-  },
   "assetBundlePatterns": ["**/*"],
   "ios": {},
   "android": {},
