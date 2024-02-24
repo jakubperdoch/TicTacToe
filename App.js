@@ -1,14 +1,13 @@
-import React from 'react';
-import { SafeAreaView } from 'react-native';
-import { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { loadFontsAsync } from './src/constants';
-import AnimatedSplash from 'react-native-animated-splash-screen';
 import HomeScreen from './src/screens/HomeScreen/HomeScreen';
 import { LinearGradient } from 'expo-linear-gradient';
-import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import Routes from './src/routes';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 SplashScreen.preventAutoHideAsync();
+
 export default function App() {
  const [appIsReady, setAppIsReady] = useState(false);
 
@@ -39,13 +38,8 @@ export default function App() {
  }
 
  return (
-  <LinearGradient
-   colors={['rgba(0,210,255,1)', 'rgba(58,123,213,100)']}
-   onLayout={onLayoutRootView}
-  >
-   <SafeAreaView>
-    <HomeScreen></HomeScreen>
-   </SafeAreaView>
-  </LinearGradient>
+  <SafeAreaProvider onLayout={onLayoutRootView}>
+   <Routes></Routes>
+  </SafeAreaProvider>
  );
 }

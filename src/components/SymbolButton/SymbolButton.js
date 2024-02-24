@@ -1,21 +1,26 @@
 import { View, Image, Pressable } from 'react-native';
 import styles from './styles';
 
-function SymbolButton(props) {
+function SymbolButton({ image, role, navigation }) {
  const pressHandler = (role) => {
   console.log('Pressed', role);
  };
  return (
   <View style={styles.SymbolButton_container}>
    <Pressable
-    onPress={pressHandler.bind(this, props.role)}
+    onPress={() =>
+     navigation.navigate('Details', {
+      player_one: role,
+      choosen_symbol: image,
+     })
+    }
     style={({ pressed }) =>
      pressed
       ? [styles.SymbolButton, styles.SymbolButton_pressed]
       : styles.SymbolButton
     }
    >
-    <Image style={styles.SymbolButton_image} source={props.image} />
+    <Image style={styles.SymbolButton_image} source={image} />
    </Pressable>
   </View>
  );
