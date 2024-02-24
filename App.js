@@ -1,37 +1,51 @@
-import { StyleSheet, Text, View, Animated } from 'react-native';
+import React from 'react';
+import { SafeAreaView } from 'react-native';
 import { useCallback, useState, useEffect } from 'react';
-import { loadFontsAsync } from './src/constants/index';
-import * as SplashScreen from 'expo-splash-screen';
+import { loadFontsAsync } from './src/constants';
 import AnimatedSplash from 'react-native-animated-splash-screen';
+import HomeScreen from './src/screens/HomeScreen/HomeScreen';
+import { LinearGradient } from 'expo-linear-gradient';
+import * as Font from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 
+SplashScreen.preventAutoHideAsync();
 export default function App() {
- const [fontsLoaded, setFontsLoaded] = useState(false);
+ const [appIsReady, setAppIsReady] = useState(false);
 
  useEffect(() => {
-  loadFonts();
-  console.log(fontsLoaded);
+  async function prepare() {
+   try {
+    await loadFontsAsync();
+   } catch (e) {
+    console.warn(e);
+   } finally {
+    setAppIsReady(true);
+   }
+  }
+
+  prepare();
  }, []);
 
- const loadFonts = useCallback(async () => {
-  try {
-   await loadFontsAsync();
-   setFontsLoaded(true);
-  } catch (error) {
-   console.log(error);
+ const onLayoutRootView = useCallback(async () => {
+  if (appIsReady) {
+   setTimeout(() => {
+    SplashScreen.hideAsync();
+   }, 1000);
   }
- }, []);
+ }, [appIsReady]);
+
+ if (!appIsReady) {
+  return null;
+ }
 
  return (
-  <AnimatedSplash
-   isLoaded={fontsLoaded}
-   logoImage={require('./src/assets/images/SplashScreen/splashScreen--light.png')}
-   backgroundColor={'#fff'}
-   logoHeight={500}
-   logoWidth={500}
+  <LinearGradient
+   colors={['rgba(0,210,255,1)', 'rgba(58,123,213,100)']}
+   onLayout={onLayoutRootView}
   >
-   <View>
-    <Text>Ahoj</Text>
-   </View>
-  </AnimatedSplash>
+   <SafeAreaView>
+    <HomeScreen></HomeScreen>
+   </SafeAreaView>
+  </LinearGradient>
  );
 }
