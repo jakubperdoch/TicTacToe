@@ -4,20 +4,19 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NameInput from '../../components/NameInput/NameInput';
 import ConfirmButton from '../../components/ConfirmButton/ConfirmButton';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function DetailsScreen({ route, navigation }) {
  const { player } = route.params;
  const [enteredPlayer, setEnteredPlayer] = useState([]);
+ const [sign, setSign] = useState('');
  const [counter, setCounter] = useState(1);
  const [name, setName] = useState('');
  const [title, setTitle] = useState('Player 1');
- //  const storeData = async (value) => {
- //   try {
- //    const jsonValue = JSON.stringify(value);
- //    await AsyncStorage.setItem('my-key', jsonValue);
- //   } catch (e) {}
- //  };
+
+ useEffect(() => {
+  setSign(player);
+ }, []);
 
  const chosenSymbol = (symbol) => {
   if (typeof symbol === 'string' && symbol.trim() === 'cross') {
@@ -38,14 +37,25 @@ function DetailsScreen({ route, navigation }) {
  };
 
  function addPlayerHandler(enteredName) {
-  console.log(counter);
-  console.log(enteredName);
-  setEnteredPlayer((currentPlayers) => [
-   ...currentPlayers,
-   { name: enteredName, id: counter },
-  ]);
-  setCounter((prevCounter) => prevCounter + 1);
+  const newPlayer = { name: enteredName, id: counter, symbol: sign };
+  const updatedPlayers = [...enteredPlayer, newPlayer];
+  setEnteredPlayer(updatedPlayers);
   setTitle('Player 2');
+  if (player === 'cross' && counter >= 1) {
+   setSign('ellipse');
+  } else {
+   setSign('cross');
+  }
+  setCounter((prevCounter) => prevCounter + 1);
+  finishedInputsHandler(updatedPlayers);
+ }
+
+ function finishedInputsHandler(updatedPlayers) {
+  if (updatedPlayers.length >= 2) {
+   navigation.navigate('Game', {
+    players: updatedPlayers,
+   });
+  }
  }
 
  function handleNameChange(newName) {
@@ -60,7 +70,7 @@ function DetailsScreen({ route, navigation }) {
      <NameInput onNameChange={handleNameChange}></NameInput>
     </View>
     <View style={styles.DetailsScreen_symbolContainer}>
-     {chosenSymbol(player)}
+     {chosenSymbol(sign)}
     </View>
     <ConfirmButton
      addPlayer={addPlayerHandler}
