@@ -10,7 +10,7 @@ function SymbolButton({ image, role, navigation }) {
    <Pressable
     onPress={() =>
      navigation.navigate('Details', {
-      player_one: role,
+      player: role,
       choosen_symbol: image,
      })
     }
