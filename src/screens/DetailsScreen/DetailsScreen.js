@@ -13,6 +13,7 @@ function DetailsScreen({ route, navigation }) {
  const [counter, setCounter] = useState(1);
  const [name, setName] = useState('');
  const [title, setTitle] = useState('Player 1');
+ const [clearNameInput, setClearNameInput] = useState(false);
 
  useEffect(() => {
   setSign(player);
@@ -46,6 +47,8 @@ function DetailsScreen({ route, navigation }) {
   } else {
    setSign('cross');
   }
+  setName('');
+  setClearNameInput(true);
   setCounter((prevCounter) => prevCounter + 1);
   finishedInputsHandler(updatedPlayers);
  }
@@ -67,7 +70,10 @@ function DetailsScreen({ route, navigation }) {
     <Text style={styles.DetailsScreen_title}>{title}</Text>
     <View style={styles.DetailsScreen_inputContainer}>
      <Text style={styles.DetailsScreen_InputDesc}>Enter Your Name </Text>
-     <NameInput onNameChange={handleNameChange}></NameInput>
+     <NameInput
+      clearInput={clearNameInput}
+      onNameChange={handleNameChange}
+     ></NameInput>
     </View>
     <View style={styles.DetailsScreen_symbolContainer}>
      {chosenSymbol(sign)}

@@ -1,11 +1,18 @@
 import { TextInput, Text } from 'react-native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './styles';
 
 function NameInput(props) {
  const [enteredName, setEnteredName] = useState('');
 
+ useEffect(() => {
+  if (props.clearInput) {
+   setEnteredName('');
+  }
+ }, [props.clearInput]);
+
  function nameInputHandler(enteredText) {
+  console.log(enteredText);
   setEnteredName(enteredText);
   props.onNameChange(enteredText);
  }
@@ -13,6 +20,8 @@ function NameInput(props) {
  return (
   <TextInput
    value={enteredName}
+   spellCheck={false}
+   autoCorrect={false}
    onChangeText={nameInputHandler}
    placeholder="Your Name"
    style={styles.NameInput}

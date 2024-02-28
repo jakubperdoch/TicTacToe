@@ -2,10 +2,17 @@ import { View, Text, Image, Pressable } from 'react-native';
 import styles from './styles';
 
 function ConfirmButton({ addPlayer, playerName }) {
+ 
+ function addPlayerHandler() {
+  if (playerName.trim() !== '' && playerName != null) {
+   addPlayer(playerName);
+  }
+ }
+
  return (
   <View style={styles.ConfirmButton}>
    <Pressable
-    onPress={addPlayer.bind(this, playerName)}
+    onPress={addPlayerHandler}
     style={({ pressed }) =>
      pressed
       ? [styles.ConfirmButton_pressed, styles.ConfirmButton]
