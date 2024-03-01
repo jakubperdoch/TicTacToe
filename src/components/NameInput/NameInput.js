@@ -12,7 +12,6 @@ function NameInput(props) {
  }, [props.clearInput]);
 
  function nameInputHandler(enteredText) {
-  console.log(enteredText);
   setEnteredName(enteredText);
   props.onNameChange(enteredText);
  }
