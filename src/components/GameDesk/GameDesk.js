@@ -1,5 +1,5 @@
 import styles from './styles';
-import { View } from 'react-native';
+import { View, Button } from 'react-native';
 import GameDeskButton from '../GameDeskButton/GamedDeskButton';
 import { useEffect, useState } from 'react';
 
@@ -24,6 +24,8 @@ function GameDesk(props) {
    [6, 4, 2],
   ];
 
+  let isTie = true;
+
   for (let condition of desk) {
    const [a, b, c] = condition;
    const buttonA = deskArray.find((button) => button.id === a);
@@ -35,10 +37,24 @@ function GameDesk(props) {
     buttonA.SymbolImage !== ''
    ) {
     setIsWinner(true);
-    console.log('Winner', buttonA.SymbolImage);
-   } else {
-    continue;
+    props.returnHomeHandler(isWinner);
+    props.changeTitleHandler(
+     `Winner is ${
+      buttonA.SymbolImage ? props.player1.name : props.player2.name
+     }!`
+    );
+    return;
    }
+   if (
+    buttonA.SymbolImage === '' ||
+    buttonB.SymbolImage === '' ||
+    buttonC.SymbolImage === ''
+   ) {
+    isTie = false;
+   }
+  }
+  if (isTie) {
+   props.changeTitleHandler("It's a tie!");
   }
  }
 
@@ -58,10 +74,6 @@ function GameDesk(props) {
  useEffect(() => {
   checkPlayerHandler();
  }, [props.symbol]);
-
- useEffect(() => {
-  console.log(isWinner);
- }, [isWinner]);
 
  return (
   <View style={styles.GameDeskContainer}>

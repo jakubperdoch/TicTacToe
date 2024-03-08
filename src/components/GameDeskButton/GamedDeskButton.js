@@ -6,16 +6,12 @@ function GameDeskButton(props) {
  const [currentSymbol, setCurrentSymbol] = useState('');
 
  function onPressHandler() {
-  // console.log(key);
-  // console.log(props.symbol);
   if (!props.isWinner && currentSymbol === '') {
    setCurrentSymbol(props.symbol);
    props.swicthPlayerHandler(props.symbol);
    props.onChangeHandler(props.id, props.symbol);
   }
  }
-
- function symbolHandler() {}
 
  return (
   <Pressable onPress={onPressHandler.bind(this, props.id, props.symbol)}>

@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import GameDesk from '../../components/GameDesk/GameDesk';
 import styles from './styles';
@@ -25,27 +25,44 @@ function GameScreen({ route, navigation }) {
 
  useEffect(() => {
   setCurrentSymbol(player_1.symbol);
-  setCurrentTitle('Player 1');
+  setCurrentTitle(`${player_1.name}’s Turn`);
  }, [player_1.symbol]);
 
  function swicthPlayerHandler(symbol) {
   if (symbol === player_1.symbol) {
    setCurrentSymbol(player_2.symbol);
-   setCurrentTitle('Player 2');
+   setCurrentTitle(`${player_2.name}’s Turn`);
   } else if (symbol === player_2.symbol) {
    setCurrentSymbol(player_1.symbol);
-   setCurrentTitle('Player 1');
+   setCurrentTitle(`${player_1.name}’s Turn`);
   }
+ }
+
+ function changeTitleHandler(title) {
+  setCurrentTitle(title);
+ }
+
+ function returnHomeHandler(condition) {
+  if (condition) {
+   return <Button title="Return Home"></Button>;
+   console.log(condition);
+  }
+  return null;
  }
 
  return (
   <SafeAreaView>
    <View style={styles.GameScreen}>
-    <Text style={styles.GameScreen_title}>{currentTitle}’s Turn</Text>
+    <Text style={styles.GameScreen_title}>{currentTitle}</Text>
     <GameDesk
      symbol={currentSymbol}
+     player1={player_1}
+     player2={player_2}
      swicthPlayerHandler={swicthPlayerHandler}
+     changeTitleHandler={changeTitleHandler}
+     returnHomeHandler={returnHomeHandler}
     ></GameDesk>
+    {returnHomeHandler()}
    </View>
   </SafeAreaView>
  );

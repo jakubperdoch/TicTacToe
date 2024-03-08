@@ -1,7 +1,6 @@
 import { View, Text, Image } from 'react-native';
 import styles from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import NameInput from '../../components/NameInput/NameInput';
 import ConfirmButton from '../../components/ConfirmButton/ConfirmButton';
 import { useState, useEffect } from 'react';

@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
  },
  GameScreen_title: {
   fontFamily: 'Mont-Bold',
+  textTransform: 'capitalize',
   color: '#fff',
   fontSize: 36,
  },
