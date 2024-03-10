@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
  DetailsScreen: {
   height: '100%',
-  paddingTop: 80,
-  justifyContent: 'space-between',
+
+  justifyContent: 'space-around',
   alignItems: 'center',
  },
  DetailsScreen_title: {

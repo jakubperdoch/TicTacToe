@@ -1,15 +1,17 @@
-import { View, Text, Button } from 'react-native';
+import { View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import GameDesk from '../../components/GameDesk/GameDesk';
 import styles from './styles';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import TitleButton from '../../components/TitleButton/TitleButton';
 
 function GameScreen({ route, navigation }) {
  const { players } = route.params;
  const [player1, player2] = players;
  const [currentSymbol, setCurrentSymbol] = useState('');
  const [currentTitle, setCurrentTitle] = useState('');
+ const [isWinner, setIsWinner] = useState(false);
 
  const player_1 = {
   name: player1.name,
@@ -42,12 +44,22 @@ function GameScreen({ route, navigation }) {
   setCurrentTitle(title);
  }
 
- function returnHomeHandler(condition) {
-  if (condition) {
-   return <Button title="Return Home"></Button>;
-   console.log(condition);
+ function onWinnerFoundHandler() {
+  setIsWinner(true);
+ }
+
+ function returnHomeHandler(isWinner) {
+  if (isWinner) {
+   return (
+    <TitleButton
+     navigation={navigation}
+     destination={'Home'}
+     buttonTitle={'Return Home'}
+    />
+   );
+  } else {
+   return null;
   }
-  return null;
  }
 
  return (
@@ -58,11 +70,13 @@ function GameScreen({ route, navigation }) {
      symbol={currentSymbol}
      player1={player_1}
      player2={player_2}
+     isWinner={isWinner}
      swicthPlayerHandler={swicthPlayerHandler}
      changeTitleHandler={changeTitleHandler}
      returnHomeHandler={returnHomeHandler}
+     onWinnerFoundHandler={onWinnerFoundHandler}
     ></GameDesk>
-    {returnHomeHandler()}
+    {returnHomeHandler(isWinner)}
    </View>
   </SafeAreaView>
  );

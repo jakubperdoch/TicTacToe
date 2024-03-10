@@ -4,15 +4,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import NameInput from '../../components/NameInput/NameInput';
 import ConfirmButton from '../../components/ConfirmButton/ConfirmButton';
 import { useState, useEffect } from 'react';
+import IconButton from '../../components/IconButton/IconButton';
 
 function DetailsScreen({ route, navigation }) {
  const { player } = route.params;
  const [enteredPlayer, setEnteredPlayer] = useState([]);
  const [sign, setSign] = useState('');
  const [counter, setCounter] = useState(1);
- const [name, setName] = useState('');
  const [title, setTitle] = useState('Player 1');
- const [clearNameInput, setClearNameInput] = useState(false);
+ const [enteredName, setEnteredName] = useState('');
 
  useEffect(() => {
   setSign(player);
@@ -36,6 +36,18 @@ function DetailsScreen({ route, navigation }) {
   }
  };
 
+ function onReturnHandler() {
+  if (title == 'Player 1') {
+   navigation.navigate('Home');
+  } else {
+   setTitle('Player 1');
+   setEnteredPlayer([]);
+   setSign(player);
+   setCounter(1);
+   clearInputHandler();
+  }
+ }
+
  function addPlayerHandler(enteredName) {
   const newPlayer = { name: enteredName, id: counter, symbol: sign };
   const updatedPlayers = [...enteredPlayer, newPlayer];
@@ -46,8 +58,7 @@ function DetailsScreen({ route, navigation }) {
   } else {
    setSign('cross');
   }
-  setName('');
-  setClearNameInput(true);
+  clearInputHandler();
   setCounter((prevCounter) => prevCounter + 1);
   finishedInputsHandler(updatedPlayers);
  }
@@ -60,18 +71,31 @@ function DetailsScreen({ route, navigation }) {
   }
  }
 
- function handleNameChange(newName) {
-  setName(newName);
+ function nameInputHandler(enteredName) {
+  setEnteredName(enteredName);
  }
+ function clearInputHandler() {
+  setEnteredName('');
+  console.log('clear');
+ }
+
  return (
   <SafeAreaView>
+   <IconButton
+    icon={
+     title == 'Player 1'
+      ? require('../../assets/images/close-icon.png')
+      : require('../../assets/images/arrow-left.png')
+    }
+    onPressHandler={onReturnHandler}
+   ></IconButton>
    <View style={styles.DetailsScreen}>
     <Text style={styles.DetailsScreen_title}>{title}</Text>
     <View style={styles.DetailsScreen_inputContainer}>
      <Text style={styles.DetailsScreen_InputDesc}>Enter Your Name </Text>
      <NameInput
-      clearInput={clearNameInput}
-      onNameChange={handleNameChange}
+      enteredName={enteredName}
+      onNameChange={nameInputHandler}
      ></NameInput>
     </View>
     <View style={styles.DetailsScreen_symbolContainer}>
@@ -79,7 +103,7 @@ function DetailsScreen({ route, navigation }) {
     </View>
     <ConfirmButton
      addPlayer={addPlayerHandler}
-     playerName={name}
+     playerName={enteredName}
     ></ConfirmButton>
    </View>
   </SafeAreaView>

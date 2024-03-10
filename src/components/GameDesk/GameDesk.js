@@ -1,5 +1,5 @@
 import styles from './styles';
-import { View, Button } from 'react-native';
+import { View } from 'react-native';
 import GameDeskButton from '../GameDeskButton/GamedDeskButton';
 import { useEffect, useState } from 'react';
 
@@ -10,7 +10,6 @@ function GameDesk(props) {
    SymbolImage: '',
   }))
  );
- const [isWinner, setIsWinner] = useState(false);
 
  function checkPlayerHandler() {
   const desk = [
@@ -36,8 +35,7 @@ function GameDesk(props) {
     buttonA.SymbolImage === buttonC.SymbolImage &&
     buttonA.SymbolImage !== ''
    ) {
-    setIsWinner(true);
-    props.returnHomeHandler(isWinner);
+    props.onWinnerFoundHandler();
     props.changeTitleHandler(
      `Winner is ${
       buttonA.SymbolImage ? props.player1.name : props.player2.name
@@ -83,7 +81,7 @@ function GameDesk(props) {
       key={button.id}
       id={button.id}
       symbol={props.symbol}
-      isWinner={isWinner}
+      isWinner={props.isWinner}
       swicthPlayerHandler={props.swicthPlayerHandler}
       onChangeHandler={onChangeHandler}
      ></GameDeskButton>
