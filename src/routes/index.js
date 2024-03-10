@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import DetailsScreen from '../screens/DetailsScreen/DetailsScreen';
 import GameScreen from '../screens/GameScreen/GameScreen';
+import ScoreBoardScreen from '../screens/ScoreBoardScreen/ScoreBoardScreen';
 
 function Routes() {
  const Stack = createNativeStackNavigator();
@@ -15,7 +16,7 @@ function Routes() {
    card: 'rgb(255, 255, 255)',
    text: 'rgb(255, 255, 255)',
    border: 'rgb(255, 255, 255)',
-   notification: 'rgb(255, 69, 58)',
+   notification: '#ff453a',
   },
  };
  return (
@@ -27,6 +28,7 @@ function Routes() {
     <Stack.Screen name="Home" component={HomeScreen} />
     <Stack.Screen name="Details" component={DetailsScreen} />
     <Stack.Screen name="Game" component={GameScreen} />
+    <Stack.Screen name="ScoreBoard" component={ScoreBoardScreen} />
    </Stack.Navigator>
   </NavigationContainer>
  );

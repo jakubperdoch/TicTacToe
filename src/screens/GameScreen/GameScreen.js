@@ -30,7 +30,7 @@ function GameScreen({ route, navigation }) {
   setCurrentTitle(`${player_1.name}’s Turn`);
  }, [player_1.symbol]);
 
- function swicthPlayerHandler(symbol) {
+ function swictchPlayerHandler(symbol) {
   if (symbol === player_1.symbol) {
    setCurrentSymbol(player_2.symbol);
    setCurrentTitle(`${player_2.name}’s Turn`);
@@ -71,12 +71,12 @@ function GameScreen({ route, navigation }) {
      player1={player_1}
      player2={player_2}
      isWinner={isWinner}
-     swicthPlayerHandler={swicthPlayerHandler}
+     swicthPlayerHandler={swictchPlayerHandler}
      changeTitleHandler={changeTitleHandler}
      returnHomeHandler={returnHomeHandler}
      onWinnerFoundHandler={onWinnerFoundHandler}
     ></GameDesk>
-    {returnHomeHandler(isWinner)}
+    <View style={styles.GameScreen_buttonContainer}>{returnHomeHandler(isWinner)}</View>
    </View>
   </SafeAreaView>
  );

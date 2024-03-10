@@ -3,6 +3,7 @@ import SymbolButton from '../../components/SymbolButton/SymbolButton';
 import styles from './styles';
 import { LinearGradient } from 'react-native-svg';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Footer from '../../components/Footer/Footer';
 
 function HomeScreen({ navigation }) {
  const buttons = [
@@ -44,6 +45,7 @@ function HomeScreen({ navigation }) {
      </View>
     </View>
    </ImageBackground>
+   <Footer navigation={navigation}></Footer>
   </SafeAreaView>
  );
 }

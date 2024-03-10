@@ -1,19 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
- GameScreen: {
+ ScoreBoardScreen: {
   height: '100%',
   justifyContent: 'space-evenly',
   alignItems: 'center',
- },
- GameScreen_title: {
-  fontFamily: 'Mont-Bold',
-  textTransform: 'capitalize',
-  color: '#fff',
-  fontSize: 36,
- },
- GameScreen_buttonContainer: {
-  height: 40,
  },
 });
 
