@@ -49,7 +49,7 @@ function GameScreen({ route, navigation }) {
 
  const storePlayersHandler = async (winner) => {
   try {
-   const data = await getData();
+   const data = (await getData()) || [];
    const PlayersBoard = [...data, player_1, player_2];
    const seenNames = new Set();
 
@@ -63,17 +63,18 @@ function GameScreen({ route, navigation }) {
 
    uniquePlayers.forEach((player) => {
     if (player.name === player_1.name || player.name === player_2.name) {
-     if (player.symbol === winner) {
+     if (player.name === winner) {
       player.win = (player.win || 0) + 1;
      } else {
       player.lose = (player.lose || 0) + 1;
      }
     }
    });
-
+   console.log(uniquePlayers);
    storeData(uniquePlayers);
   } catch (err) {
    console.log(err);
+   console.log('bbb');
   }
  };
 

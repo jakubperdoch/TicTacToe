@@ -76,7 +76,6 @@ function DetailsScreen({ route, navigation }) {
  }
  function clearInputHandler() {
   setEnteredName('');
-  console.log('clear');
  }
 
  return (

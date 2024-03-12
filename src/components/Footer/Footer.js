@@ -6,7 +6,7 @@ import { useRoute } from '@react-navigation/native';
 
 function Footer({ navigation }) {
  const route = useRoute();
- console.log(route.name);
+
  return (
   <View style={styles.Footer}>
    <TouchableOpacity onPress={() => navigation.navigate('Home')}>
