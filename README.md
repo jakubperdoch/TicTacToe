@@ -4,6 +4,9 @@
 
 Welcome to my React Native Expo TicTacToe game! This project is designed for two players and offers a delightful gaming experience right on your mobile device. Utilizing AsyncStorage, the game keeps track of each player's win/lose streak, ensuring that your achievements are saved and ready to be challenged at any time.
 
+## TestFlight Link
+https://testflight.apple.com/join/MXw5LAfP
+
 ## Project Overview
 
 This application is built with React Native and Expo, incorporating AsyncStorage for data persistence and routes for seamless navigation. The project aims to deliver a fun and competitive TicTacToe game that can be enjoyed with friends. Below you will find all the necessary details to get started with the project, set up your development environment, and understand the project structure.
