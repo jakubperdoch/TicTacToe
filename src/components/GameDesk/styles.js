@@ -12,7 +12,13 @@ const styles = StyleSheet.create({
   height: 324,
   width: 324,
   backgroundColor: '#fff',
-  borderRadius: 30,
+  borderRadius: 25,
+  shadowColor: '#000',
+  shadowOffset: {
+   height: 5,
+  },
+  shadowOpacity: 0.14,
+  shadowRadius: 2.27,
  },
 });
 

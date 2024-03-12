@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
  GameScreen: {
   height: '100%',
   justifyContent: 'space-evenly',
+  gap: 40,
   alignItems: 'center',
  },
  GameScreen_title: {

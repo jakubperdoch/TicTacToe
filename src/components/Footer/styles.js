@@ -9,8 +9,10 @@ const styles = StyleSheet.create({
   flexDirection: 'row',
   justifyContent: 'center',
   gap: 80,
-  backgroundColor: '#0aa2d4',
+  backgroundColor: '#0599caa3',
   paddingTop: 15,
+  borderTopLeftRadius: 15,
+  borderTopRightRadius: 15,
  },
 });
 

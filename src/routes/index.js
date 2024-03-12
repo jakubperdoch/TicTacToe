@@ -12,7 +12,7 @@ function Routes() {
   dark: false,
   colors: {
    primary: 'rgb(255, 255, 255)',
-   background: 'rgb(0, 210, 255)',
+   background: 'rgba(32, 172, 203, 1)',
    card: 'rgb(255, 255, 255)',
    text: 'rgb(255, 255, 255)',
    border: 'rgb(255, 255, 255)',

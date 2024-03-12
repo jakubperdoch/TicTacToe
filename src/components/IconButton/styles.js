@@ -4,7 +4,8 @@ const styles = StyleSheet.create({
  IconButton: {
   height: 30,
   width: 30,
-  marginLeft: 10,
+  marginTop: 5,
+  marginLeft: 20,
   alignItems: 'center',
   justifyContent: 'center',
  },

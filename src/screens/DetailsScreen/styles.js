@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
  DetailsScreen: {
   height: '100%',
-
-  justifyContent: 'space-around',
+  justifyContent: 'space-evenly',
+  gap: 40,
   alignItems: 'center',
  },
  DetailsScreen_title: {
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
   justifyContent: 'center',
  },
  DetailsScreen_chosenSymbol: {
-  height: 70,
-  width: 70,
+  height: 60,
+  width: 60,
  },
 });
 

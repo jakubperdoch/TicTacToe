@@ -11,6 +11,12 @@ const styles = StyleSheet.create({
   alignItems: 'center',
   paddingHorizontal: 15,
   marginBottom: 15,
+  shadowColor: '#000',
+  shadowOffset: {
+   height: 5,
+  },
+  shadowOpacity: 0.14,
+  shadowRadius: 1.27,
  },
  PlayerName: {},
  PlayerStreakContainer: {
@@ -18,7 +24,6 @@ const styles = StyleSheet.create({
   justifyContent: 'space-around',
   width: 150,
  },
- PlayerStreak: {},
 });
 
 export default styles;

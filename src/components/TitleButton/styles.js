@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   gap: 5,
   borderRadius: 15,
   backgroundColor: '#fff',
-  width: 300,
+  width: 324,
   height: 40,
  },
  buttonTitle_icon: {
