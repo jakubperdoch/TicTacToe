@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   gap: 8,
   borderRadius: 17,
   backgroundColor: '#FCFBFC',
-  width: 300,
+  width: 324,
   height: 45,
  },
  ConfirmButton_icon: {
