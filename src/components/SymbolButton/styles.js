@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
  SymbolButton_container: {
-  backgroundColor: '#fff',
+  backgroundColor: '#FCFBFC',
   width: 120,
   height: 120,
   borderRadius: 20,

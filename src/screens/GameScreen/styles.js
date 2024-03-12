@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
  GameScreen_title: {
   fontFamily: 'Mont-Bold',
   textTransform: 'capitalize',
-  color: '#fff',
+  color: '#FCFBFC',
   fontSize: 36,
  },
  GameScreen_buttonContainer: {

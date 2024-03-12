@@ -2,10 +2,10 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
  PlayerCard: {
-  backgroundColor: '#fff',
+  backgroundColor: '#FCFBFC',
   width: 350,
   height: 40,
-  borderRadius: 15,
+  borderRadius: 17,
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',

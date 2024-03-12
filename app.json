@@ -8,7 +8,8 @@
   "userInterfaceStyle": "light",
   "assetBundlePatterns": ["**/*"],
   "splash": {
-   "image": "./src/assets/images/SplashScreen/splashScreen--light.png"
+   "image": "./src/assets/images/SplashScreen/splashScreen--light.png",
+   "resizeMode": "contain"
   },
   "ios": {
    "bundleIdentifier": "com.jakubperdoch.TicTicToe"

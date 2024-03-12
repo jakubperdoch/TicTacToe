@@ -7,12 +7,12 @@ const styles = StyleSheet.create({
   alignItems: 'center',
  },
  DetailsScreen_title: {
-  color: '#fff',
+  color: '#FCFBFC',
   fontFamily: 'Mont-Bold',
   fontSize: 40,
  },
  DetailsScreen_InputDesc: {
-  color: '#fff',
+  color: '#FCFBFC',
   fontFamily: 'Mont-Regular',
   fontSize: 22,
  },
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   gap: 20,
  },
  DetailsScreen_symbolContainer: {
-  backgroundColor: '#fff',
+  backgroundColor: '#FCFBFC',
   width: 120,
   height: 120,
   borderRadius: 20,

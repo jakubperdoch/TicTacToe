@@ -2,9 +2,9 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
  NameInput: {
-  backgroundColor: '#fff',
+  backgroundColor: '#FCFBFC',
   width: 340,
-  height: 40,
+  height: 45,
   borderRadius: 17,
   paddingStart: 10,
   fontFamily: 'Mont-Regular',

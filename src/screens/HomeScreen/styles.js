@@ -19,12 +19,12 @@ const styles = StyleSheet.create({
   height: '60%',
  },
  HomeScreen_title: {
-  color: '#fff',
+  color: '#FCFBFC',
   fontSize: 42,
   fontFamily: 'Mont-Bold',
  },
  HomeScreen_desc: {
-  color: '#fff',
+  color: '#FCFBFC',
   fontSize: 24,
   fontFamily: 'Mont-Regular',
  },

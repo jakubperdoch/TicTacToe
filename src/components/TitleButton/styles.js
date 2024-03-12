@@ -6,10 +6,10 @@ const styles = StyleSheet.create({
   alignItems: 'center',
   justifyContent: 'center',
   gap: 5,
-  borderRadius: 15,
-  backgroundColor: '#fff',
+  borderRadius: 17,
+  backgroundColor: '#FCFBFC',
   width: 324,
-  height: 40,
+  height: 45,
  },
  buttonTitle_icon: {
   height: 11,
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
  },
  buttonTitle_text: {
   fontFamily: 'Mont-Regular',
-  fontSize: 13,
+  fontSize: 15,
  },
 });
 
