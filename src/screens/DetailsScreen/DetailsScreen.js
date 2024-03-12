@@ -49,7 +49,7 @@ function DetailsScreen({ route, navigation }) {
  }
 
  function addPlayerHandler(enteredName) {
-  const newPlayer = { name: enteredName, id: counter, symbol: sign };
+  const newPlayer = { name: enteredName, symbol: sign };
   const updatedPlayers = [...enteredPlayer, newPlayer];
   setEnteredPlayer(updatedPlayers);
   setTitle('Player 2');

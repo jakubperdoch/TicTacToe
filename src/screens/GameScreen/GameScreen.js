@@ -5,6 +5,7 @@ import styles from './styles';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import TitleButton from '../../components/TitleButton/TitleButton';
+import { getData, storeData } from '../../store/store';
 
 function GameScreen({ route, navigation }) {
  const { players } = route.params;
@@ -15,14 +16,16 @@ function GameScreen({ route, navigation }) {
 
  const player_1 = {
   name: player1.name,
-  id: player1.id,
   symbol: player1.symbol,
+  win: player1.win,
+  lose: player1.lose,
  };
 
  const player_2 = {
   name: player2.name,
-  id: player2.id,
   symbol: player2.symbol,
+  win: player2.win,
+  lose: player2.lose,
  };
 
  useEffect(() => {
@@ -30,7 +33,7 @@ function GameScreen({ route, navigation }) {
   setCurrentTitle(`${player_1.name}’s Turn`);
  }, [player_1.symbol]);
 
- function swictchPlayerHandler(symbol) {
+ function switchPlayerHandler(symbol) {
   if (symbol === player_1.symbol) {
    setCurrentSymbol(player_2.symbol);
    setCurrentTitle(`${player_2.name}’s Turn`);
@@ -44,8 +47,39 @@ function GameScreen({ route, navigation }) {
   setCurrentTitle(title);
  }
 
- function onWinnerFoundHandler() {
+ const storePlayersHandler = async (winner) => {
+  try {
+   const data = await getData();
+   const PlayersBoard = [...data, player_1, player_2];
+   const seenNames = new Set();
+
+   let uniquePlayers = PlayersBoard.filter((player) => {
+    if (!seenNames.has(player.name)) {
+     seenNames.add(player.name);
+     return true;
+    }
+    return false;
+   });
+
+   uniquePlayers.forEach((player) => {
+    if (player.name === player_1.name || player.name === player_2.name) {
+     if (player.symbol === winner) {
+      player.win = (player.win || 0) + 1;
+     } else {
+      player.lose = (player.lose || 0) + 1;
+     }
+    }
+   });
+
+   storeData(uniquePlayers);
+  } catch (err) {
+   console.log(err);
+  }
+ };
+
+ function onWinnerFoundHandler(winner) {
   setIsWinner(true);
+  storePlayersHandler(winner);
  }
 
  function returnHomeHandler(isWinner) {
@@ -71,12 +105,14 @@ function GameScreen({ route, navigation }) {
      player1={player_1}
      player2={player_2}
      isWinner={isWinner}
-     swicthPlayerHandler={swictchPlayerHandler}
+     switchPlayerHandler={switchPlayerHandler}
      changeTitleHandler={changeTitleHandler}
      returnHomeHandler={returnHomeHandler}
      onWinnerFoundHandler={onWinnerFoundHandler}
     ></GameDesk>
-    <View style={styles.GameScreen_buttonContainer}>{returnHomeHandler(isWinner)}</View>
+    <View style={styles.GameScreen_buttonContainer}>
+     {returnHomeHandler(isWinner)}
+    </View>
    </View>
   </SafeAreaView>
  );

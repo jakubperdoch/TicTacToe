@@ -7,8 +7,9 @@ const styles = StyleSheet.create({
   position: 'absolute',
   bottom: 0,
   flexDirection: 'row',
-  justifyContent: 'space-evenly',
-  backgroundColor: '#13B6F1',
+  justifyContent: 'center',
+  gap: 80,
+  backgroundColor: '#0aa2d4',
   paddingTop: 15,
  },
 });

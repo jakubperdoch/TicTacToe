@@ -8,7 +8,7 @@ function GameDeskButton(props) {
  function onPressHandler() {
   if (!props.isWinner && currentSymbol === '') {
    setCurrentSymbol(props.symbol);
-   props.swicthPlayerHandler(props.symbol);
+   props.switchPlayerHandler(props.symbol);
    props.onChangeHandler(props.id, props.symbol);
   }
  }

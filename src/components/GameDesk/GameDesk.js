@@ -35,7 +35,7 @@ function GameDesk(props) {
     buttonA.SymbolImage === buttonC.SymbolImage &&
     buttonA.SymbolImage !== ''
    ) {
-    props.onWinnerFoundHandler();
+    props.onWinnerFoundHandler(buttonA.SymbolImage);
     props.changeTitleHandler(
      `Winner is ${
       buttonA.SymbolImage ? props.player1.name : props.player2.name
@@ -82,7 +82,7 @@ function GameDesk(props) {
       id={button.id}
       symbol={props.symbol}
       isWinner={props.isWinner}
-      swicthPlayerHandler={props.swicthPlayerHandler}
+      switchPlayerHandler={props.switchPlayerHandler}
       onChangeHandler={onChangeHandler}
      ></GameDeskButton>
     ))}
