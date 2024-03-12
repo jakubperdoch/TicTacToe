@@ -65,8 +65,10 @@ function GameScreen({ route, navigation }) {
     if (player.name === player_1.name || player.name === player_2.name) {
      if (player.name === winner) {
       player.win = (player.win || 0) + 1;
+      player.lose = player.lose || 0;
      } else {
       player.lose = (player.lose || 0) + 1;
+      player.win = player.win || 0;
      }
     }
    });

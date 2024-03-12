@@ -1,5 +1,5 @@
 import styles from './styles';
-import { View, Image, Pressable } from 'react-native';
+import { View, Image, Pressable, Text } from 'react-native';
 import { useState } from 'react';
 
 function GameDeskButton(props) {

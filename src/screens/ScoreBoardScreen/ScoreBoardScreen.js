@@ -5,12 +5,13 @@ import Footer from '../../components/Footer/Footer';
 import { useEffect, useState } from 'react';
 import { getData } from '../../store/store';
 import PlayerCard from '../../components/PlayerCard/PlayerCard';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 function ScoreBoardScreen({ navigation }) {
  const [players, setPlayers] = useState([]);
  useEffect(() => {
   const fetchData = async () => {
    try {
+    // AsyncStorage.clear();
     const data = await getData();
     setPlayers(data);
    } catch (err) {
