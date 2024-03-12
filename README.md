@@ -16,8 +16,6 @@ This application is built with React Native and Expo, incorporating AsyncStorage
 To ensure a smooth development process, we recommend setting up your environment with Visual Studio Code (VSCode). Enhance your workflow with these extensions:
 
 - [VSCode](https://code.visualstudio.com/)
-- [React Native Tools](https://marketplace.visualstudio.com/items?itemName=msjsdiag.vscode-react-native)
-- [Expo Tools](https://marketplace.visualstudio.com/items?itemName=byCedric.vscode-expo)
 
 ## Customize Configuration
 
