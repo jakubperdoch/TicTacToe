@@ -1,26 +1,31 @@
 {
- "expo": {
-  "name": "TicTicToee",
-  "slug": "TicTacToe",
-  "version": "1.0.1",
-  "orientation": "portrait",
-  "icon": "./src/assets/images/appIcon.png",
-  "userInterfaceStyle": "light",
-  "assetBundlePatterns": ["**/*"],
-  "splash": {
-   "image": "./src/assets/images/SplashScreen/splashScreen--light.png",
-   "resizeMode": "contain"
-  },
-  "ios": {
-   "bundleIdentifier": "com.jakubperdoch.TicTicToe"
-  },
-  "android": {},
-  "web": {},
-  "plugins": ["expo-font"],
-  "extra": {
-   "eas": {
-    "projectId": "750809eb-8a40-414e-ac07-829c34f00ea9"
-   }
+  "expo": {
+    "name": "TicTicToee",
+    "slug": "TicTacToe",
+    "version": "1.0.1",
+    "orientation": "portrait",
+    "icon": "./src/assets/images/appIcon.png",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "splash": {
+      "image": "./src/assets/images/SplashScreen/splashScreen--light.png",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "bundleIdentifier": "com.jakubperdoch.TicTicToe",
+      "buildNumber": "2"
+    },
+    "android": {},
+    "web": {},
+    "plugins": [
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "750809eb-8a40-414e-ac07-829c34f00ea9"
+      }
+    }
   }
- }
 }

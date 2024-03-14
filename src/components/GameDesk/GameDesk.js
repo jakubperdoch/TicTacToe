@@ -55,6 +55,7 @@ function GameDesk(props) {
   }
   if (isTie) {
    props.changeTitleHandler("It's a tie!");
+   props.onTieHandler();
   }
  }
 

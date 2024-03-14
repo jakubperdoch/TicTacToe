@@ -6,7 +6,6 @@ export const storeData = async (value) => {
   await AsyncStorage.setItem('PlayersBoard', jsonValue);
  } catch (err) {
   console.log(err);
-  console.log('ccc');
  }
 };
 

@@ -13,6 +13,7 @@ function GameScreen({ route, navigation }) {
  const [currentSymbol, setCurrentSymbol] = useState('');
  const [currentTitle, setCurrentTitle] = useState('');
  const [isWinner, setIsWinner] = useState(false);
+ const [isTie, setIsTie] = useState(false);
 
  const player_1 = {
   name: player1.name,
@@ -85,8 +86,12 @@ function GameScreen({ route, navigation }) {
   storePlayersHandler(winner);
  }
 
+ function onTieHandler() {
+  setIsTie(true);
+ }
+
  function returnHomeHandler(isWinner) {
-  if (isWinner) {
+  if (isWinner || isTie) {
    return (
     <TitleButton
      navigation={navigation}
@@ -108,6 +113,7 @@ function GameScreen({ route, navigation }) {
      player1={player_1}
      player2={player_2}
      isWinner={isWinner}
+     onTieHandler={onTieHandler}
      switchPlayerHandler={switchPlayerHandler}
      changeTitleHandler={changeTitleHandler}
      returnHomeHandler={returnHomeHandler}
